@@ -45,8 +45,8 @@
     <header class="site-header" id="top">
       <div class="bar">
         <a class="brand" href="/" data-route aria-label="Müller Finance – Startseite">
-          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M8.5 23V9.5h3.2l4.3 7.2 4.3-7.2h3.2V23h-3v-8l-3.9 6.4h-1.2L11.5 15v8h-3Z" fill="var(--on-brand)"/></svg>
-          <span class="brand-name">Müller<span> Finance</span></span>
+          <svg class="logo-mark" viewBox="0 0 54 68" aria-hidden="true"><path d="M7 52V12l20 24 20-24v40" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="27" cy="36" r="5" class="logo-dot"/><path d="M7 63h40" class="logo-line" stroke-width="3.4" stroke-linecap="round"/></svg>
+          <span class="logo-word"><b>Müller</b> <span>Finance</span></span>
         </a>
         <nav class="nav" id="nav" aria-label="Hauptnavigation">
           <a href="/" data-route data-spy="start">Home</a>
@@ -193,25 +193,30 @@
 
       <!-- ÜBER MICH -->
       <section class="section about" id="ueber-mich" aria-labelledby="h-about">
-        <div class="wrap about-grid">
-          <div class="portrait reveal">
-            <div class="portrait-frame">
+        <div class="wrap">
+          <article class="profile reveal">
+            <div class="profile-photo">
               <img src="/dominique-mueller.webp" width="600" height="1077" alt="Dominique Müller, Inhaberin von Müller Finance" loading="lazy" decoding="async" />
             </div>
-            <p class="badge"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Eidg. Fachausweis<small>Finanz- und Rechnungswesen</small></span></p>
-          </div>
-          <div class="reveal">
-            <p class="eyebrow-dark">Über mich</p>
-            <h2 id="h-about">Dominique Müller</h2>
-            <p class="about-role">Fachfrau im Finanz- und Rechnungswesen mit eidg. Fachausweis</p>
-            <p>Nach meiner Aus- und Weiterbildung habe ich über viele Jahre im Finanz- und Personalbereich gearbeitet – in kleinen und mittleren Unternehmen genauso wie in internationalen Konzernen. Dieses Wissen bringe ich heute bei Müller Finance für Sie ein: in Buchhaltung, Personaladministration und Steuern.</p>
-            <p>Mir ist wichtig, dass Sie die passende Lösung bekommen – nicht die grösste.</p>
-            <ul class="values">
-              <li><svg class="ic"><use href="#i-check"/></svg><span><b>Vertrauen</b> – offene Kommunikation, klare Absprachen</span></li>
-              <li><svg class="ic"><use href="#i-check"/></svg><span><b>Diskretion</b> – Ihre Zahlen bleiben bei mir</span></li>
-              <li><svg class="ic"><use href="#i-check"/></svg><span><b>Qualität</b> – sorgfältig, nachvollziehbar, termingerecht</span></li>
-            </ul>
-          </div>
+            <header class="profile-head">
+              <p class="eyebrow-dark">Über mich</p>
+              <h2 id="h-about">Dominique Müller</h2>
+              <p class="profile-role">Fachfrau im Finanz- und Rechnungswesen</p>
+              <p class="cred"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Eidg. Fachausweis</p>
+            </header>
+            <div class="profile-body">
+              <p>Viele Jahre im Finanz- und Personalbereich, in KMU genauso wie in internationalen Konzernen. Dieses Wissen bringe ich heute für Sie ein, in Buchhaltung, Personaladministration und Steuern. Mir ist wichtig, dass Sie die passende Lösung bekommen, nicht die grösste.</p>
+              <dl class="values">
+                <div><dt>Vertrauen</dt><dd>Offene Kommunikation, klare Absprachen</dd></div>
+                <div><dt>Diskretion</dt><dd>Ihre Zahlen bleiben bei mir</dd></div>
+                <div><dt>Qualität</dt><dd>Sorgfältig, nachvollziehbar, termingerecht</dd></div>
+              </dl>
+              <div class="profile-actions">
+                <a class="btn btn-primary" href="/kontakt" data-route>Erstgespräch mit mir <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                <a class="link-arrow" href="tel:+41775125109"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg> 077 512 51 09</a>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -279,7 +284,7 @@
     <footer class="site-footer">
       <div class="wrap foot">
         <div>
-          <p class="foot-brand">Müller Finance</p>
+          <p class="foot-brand"><svg class="logo-mark" viewBox="0 0 54 68" aria-hidden="true"><path d="M7 52V12l20 24 20-24v40" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="27" cy="36" r="5" class="logo-dot"/><path d="M7 63h40" class="logo-line" stroke-width="3.4" stroke-linecap="round"/></svg><span class="logo-word"><b>Müller</b> <span>Finance</span></span></p>
           <p class="foot-sub">Buchhaltung · Personal · Steuern<br />5313 Klingnau</p>
         </div>
         <nav aria-label="Rechtliches">
