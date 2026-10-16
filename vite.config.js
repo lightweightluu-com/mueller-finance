@@ -2,10 +2,10 @@ import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 // App-Name und Farben hier anpassen – sie landen im Web-App-Manifest.
-const APP_NAME = 'Neue App';
-const APP_SHORT_NAME = 'App';
-const THEME_COLOR = '#14532d';
-const BACKGROUND_COLOR = '#f7f5ef';
+const APP_NAME = 'Müller Finance';
+const APP_SHORT_NAME = 'Müller Finance';
+const THEME_COLOR = '#0b2a21';
+const BACKGROUND_COLOR = '#07201a';
 
 export default defineConfig({
   plugins: [
@@ -16,6 +16,7 @@ export default defineConfig({
         name: APP_NAME,
         short_name: APP_SHORT_NAME,
         lang: 'de',
+        description: 'Buchhaltung, Personalwesen und Steuern – kompetent, zuverlässig und persönlich.',
         start_url: '/',
         scope: '/',
         display: 'standalone',

@@ -1,21 +1,21 @@
-# pwa-template
+# Müller Finance
 
-Vorlage für PWAs, die automatisch auf `<repo-name>.lightweightluu.com` live gehen.
-
-## Neues Projekt starten
-1. Auf GitHub **„Use this template“ → Create a new repository** (Owner: `lightweightluu-com`).
-2. Repo-Name = Subdomain, z.B. `rezepte` → `rezepte.lightweightluu.com`.
-   Nur Kleinbuchstaben, Zahlen und Bindestriche verwenden.
-3. Repo in Claude Code öffnen und beschreiben, was gebaut werden soll.
-4. Jeder Push auf `main` deployt automatisch. Die URL steht in der Zusammenfassung des Actions-Laufs.
+Neue Website von Müller Finance (Buchhaltung, Personalwesen, Steuern – Klingnau).
+Vite + `vite-plugin-pwa`, statisch. Push auf `main` deployt automatisch auf
+`https://mueller-finance.lightweightluu.com`.
 
 ## Lokal
 ```bash
 npm install
 npm run dev
+npm run build
 ```
 
-## Voraussetzungen (einmalig, bereits erledigt)
-- Org-Secrets `CLOUDFLARE_API_TOKEN` und `CLOUDFLARE_ACCOUNT_ID` für alle Repos.
-- Zone `lightweightluu.com` in Cloudflare.
-- Für die gewünschte Subdomain darf noch kein DNS-Eintrag existieren.
+## Aufbau
+- `index.html` – Struktur und Inhalte
+- `src/style.css` – Design-Tokens, Layout, Hell-/Dunkelmodus
+- `src/main.js` – Animationen, Leistungs-Auswahl, Formular (mailto), SPA-Router
+- `src/legal.js` – Impressum, Datenschutz, AGB
+
+Original-URLs (`/buchhaltung`, `/personalwesen`, `/steuern`, `/ueber-mich`, `/kontakt`,
+`/impressum`, `/datenschutz`, `/agb`) bleiben als Deep-Links gültig.
