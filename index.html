@@ -15,6 +15,7 @@
     <meta property="og:locale" content="de_CH" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script>try{if(localStorage.getItem("mf-theme")==="classic")document.documentElement.dataset.theme="classic"}catch(e){}</script>
     <title>Müller Finance – Buchhaltung, Personal &amp; Steuern</title>
   </head>
   <body>
@@ -50,6 +51,9 @@
           <a href="/ueber-mich" data-route data-spy="ueber-mich">Über mich</a>
           <a href="/kontakt" data-route data-spy="kontakt">Kontakt</a>
         </nav>
+        <button class="theme-btn" id="themeBtn" type="button" aria-pressed="false" aria-label="Originalfarben der bisherigen Website verwenden">
+          <span class="swatch" aria-hidden="true"></span><span class="theme-label">Originalfarben</span>
+        </button>
         <a class="btn btn-brass btn-sm header-cta" href="/kontakt" data-route>Erstgespräch</a>
         <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen">
           <span></span><span></span>
@@ -186,14 +190,11 @@
       <!-- ÜBER MICH -->
       <section class="section about" id="ueber-mich" aria-labelledby="h-about">
         <div class="wrap about-grid">
-          <div class="portrait reveal" aria-hidden="true">
-            <div class="seal">
-              <svg viewBox="0 0 200 200">
-                <defs><path id="circ" d="M100 100 m-78 0 a78 78 0 1 1 156 0 a78 78 0 1 1 -156 0"/></defs>
-                <text><textPath href="#circ" startOffset="0" textLength="482" lengthAdjust="spacing">Eidg. Fachausweis · Finanz- und Rechnungswesen ·</textPath></text>
-              </svg>
-              <span class="monogram">DM</span>
+          <div class="portrait reveal">
+            <div class="portrait-frame">
+              <img src="/dominique-mueller.webp" width="600" height="1077" alt="Dominique Müller, Inhaberin von Müller Finance" loading="lazy" decoding="async" />
             </div>
+            <p class="badge"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Eidg. Fachausweis<small>Finanz- und Rechnungswesen</small></span></p>
           </div>
           <div class="reveal">
             <p class="eyebrow-dark">Über mich</p>

@@ -57,6 +57,30 @@ const LEDGER = [
   ['MWST-Abgrenzung Q3', 'Mehrwertsteuer', 3118.4]
 ];
 
+/* ───────── Farbwelt-Schalter ───────── */
+const themeBtn = $('#themeBtn');
+const metaTheme = $('meta[name="theme-color"]');
+function applyTheme(t) {
+  const classic = t === 'classic';
+  document.documentElement.dataset.theme = classic ? 'classic' : 'forest';
+  themeBtn.setAttribute('aria-pressed', String(classic));
+  themeBtn.setAttribute('aria-label', classic ? 'Zurück zur neuen Farbwelt' : 'Originalfarben der bisherigen Website verwenden');
+  $('.theme-label').textContent = classic ? 'Neue Farben' : 'Originalfarben';
+  metaTheme.content = classic ? '#6b5440' : '#0b2a21';
+}
+let savedTheme = null;
+try { savedTheme = localStorage.getItem('mf-theme'); } catch {}
+applyTheme(savedTheme === 'classic' ? 'classic' : 'forest');
+themeBtn.addEventListener('click', () => {
+  const next = document.documentElement.dataset.theme === 'classic' ? 'forest' : 'classic';
+  const r = themeBtn.getBoundingClientRect();
+  document.documentElement.style.setProperty('--tx', `${r.left + r.width / 2}px`);
+  document.documentElement.style.setProperty('--ty', `${r.top + r.height / 2}px`);
+  const swap = () => applyTheme(next);
+  if (document.startViewTransition && !reduced) document.startViewTransition(swap); else swap();
+  try { localStorage.setItem('mf-theme', next); } catch {}
+});
+
 /* ───────── Reveal / Intro ───────── */
 requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('ready')));
 const io = new IntersectionObserver((es) => {
@@ -238,7 +262,7 @@ SERVICES.forEach((s, i) => {
 function moveIndicator() {
   const t = $$('.tab')[activeTab];
   ind.style.width = `${t.offsetWidth}px`;
-  ind.style.transform = `translateX(${t.offsetLeft - 6}px)`;
+  ind.style.transform = `translateX(${t.offsetLeft}px)`;
   tabsEl.scrollTo({ left: t.offsetLeft - (tabsEl.clientWidth - t.offsetWidth) / 2, behavior: reduced ? 'auto' : 'smooth' });
 }
 function selectTab(i, push) {
