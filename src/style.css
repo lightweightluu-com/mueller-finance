@@ -357,11 +357,12 @@ button { cursor: pointer; }
 /* About */
 .about { background: var(--surface-2); }
 .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: var(--s8); align-items: center; }
-.portrait { position: relative; justify-self: center; width: min(400px, 86%); }
-.portrait-frame { position: relative; aspect-ratio: 4 / 5; border-radius: 999px 999px var(--r-xl) var(--r-xl); overflow: hidden; background: radial-gradient(circle at 50% 18%, var(--forest-700), var(--forest-950) 75%); box-shadow: var(--shadow-card), 0 0 0 10px color-mix(in srgb, var(--brass-400) 18%, transparent); isolation: isolate; }
-.portrait-frame::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(60% 40% at 50% 12%, rgb(var(--brass-rgb) / 0.35), transparent 70%); }
-.portrait-frame img { position: absolute; left: 50%; bottom: 0; width: 86%; height: auto; translate: -50% 0; filter: drop-shadow(0 18px 30px rgb(0 0 0 / 0.35)); }
-.badge { position: absolute; left: -6%; bottom: 9%; display: flex; align-items: center; gap: 10px; padding: 10px 16px 10px 12px; border-radius: 999px; background: var(--surface); color: var(--ink); box-shadow: var(--shadow-card); font-size: 0.85rem; font-weight: 600; line-height: 1.25; max-width: 78%; }
+.portrait { position: relative; justify-self: center; width: min(380px, 84%); }
+.portrait-frame { position: relative; aspect-ratio: 600 / 860; isolation: isolate; }
+.portrait-frame::before { content: ''; position: absolute; z-index: -1; inset: 20% 0 0 0; border-radius: var(--r-xl); background: radial-gradient(circle at 50% 30%, var(--forest-700), var(--forest-950) 80%); box-shadow: var(--shadow-card), 0 0 0 10px color-mix(in srgb, var(--brass-400) 18%, transparent); }
+.portrait-frame::after { content: ''; position: absolute; z-index: -1; inset: 20% 0 0 0; border-radius: var(--r-xl); background: radial-gradient(60% 40% at 50% 8%, rgb(var(--brass-rgb) / 0.3), transparent 70%); }
+.portrait-frame img { position: absolute; inset: 0 auto auto 50%; width: 94%; height: auto; translate: -50% 0; clip-path: inset(0 0 15% 0 round 0 0 var(--r-xl) var(--r-xl)); }
+.badge { position: absolute; left: 50%; translate: -50% 50%; bottom: 0; width: max-content; display: flex; align-items: center; gap: 10px; padding: 10px 16px 10px 12px; border-radius: 999px; background: var(--surface); color: var(--ink); box-shadow: var(--shadow-card); font-size: 0.85rem; font-weight: 600; line-height: 1.25; max-width: 78%; }
 .badge .ic { width: 30px; height: 30px; padding: 6px; border-radius: 50%; background: var(--forest-800); color: var(--brass-300); }
 .badge small { display: block; font-weight: 500; color: var(--muted); font-size: 0.74rem; }
 .about h2 { margin-bottom: var(--s2); }
