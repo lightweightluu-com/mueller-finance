@@ -314,8 +314,12 @@ button { cursor: pointer; }
 .toggle[aria-pressed='true'] .ic-ok { opacity: 1; transform: none; }
 @media (prefers-color-scheme: dark) { .toggle[aria-pressed='true'] { background: var(--accent); border-color: var(--accent); color: var(--forest-950); } }
 @media (max-width: 860px) {
-  .panel.active { grid-template-columns: minmax(0, 1fr); gap: var(--s6); }
-  .panel-intro { position: static; }
+  .panel.active { grid-template-columns: minmax(0, 1fr); gap: var(--s5); }
+  .panel-intro { position: static; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: var(--s3) var(--s4); }
+  .panel-icon { width: 48px; height: 48px; border-radius: 14px; margin: 0; }
+  .panel-icon .ic { width: 24px; height: 24px; }
+  .panel-intro h3 { margin: 0; font-size: clamp(1.8rem, 8vw, 2.3rem); }
+  .panel-intro p { grid-column: 1 / -1; margin: 0; font-size: 1rem; }
   .item { padding: var(--s4); }
   .item h4 { font-size: 1.12rem; }
 }
