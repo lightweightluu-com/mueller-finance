@@ -63,8 +63,6 @@ const metaTheme = $('meta[name="theme-color"]');
 function applyTheme(t) {
   const classic = t === 'classic';
   document.documentElement.dataset.theme = classic ? 'classic' : 'forest';
-  themeBtn.setAttribute('aria-pressed', String(classic));
-  themeBtn.setAttribute('aria-label', classic ? 'Zurück zur neuen Farbwelt' : 'Originalfarben der bisherigen Website verwenden');
   $('.theme-label').textContent = classic ? 'Neue Farben' : 'Originalfarben';
   metaTheme.content = classic ? '#6b5440' : '#0b2a21';
 }
@@ -225,7 +223,7 @@ SERVICES.forEach((s, i) => {
   const tab = document.createElement('button');
   tab.className = 'tab';
   tab.type = 'button';
-  tab.role = 'tab';
+  tab.setAttribute('role', 'tab');
   tab.id = `tab-${s.id}`;
   tab.setAttribute('aria-controls', `panel-${s.id}`);
   tab.innerHTML = `<svg class="ic" aria-hidden="true"><use href="#${s.icon}"/></svg>${s.label}`;
@@ -240,7 +238,7 @@ SERVICES.forEach((s, i) => {
   const panel = document.createElement('div');
   panel.className = 'panel';
   panel.id = `panel-${s.id}`;
-  panel.role = 'tabpanel';
+  panel.setAttribute('role', 'tabpanel');
   panel.setAttribute('aria-labelledby', tab.id);
   panel.innerHTML = `
     <div class="panel-intro">
@@ -251,7 +249,7 @@ SERVICES.forEach((s, i) => {
     <ul class="items">${s.items.map(([name, desc], k) => `
       <li class="item" data-key="${s.id}-${k}">
         <div><h4>${name}</h4><p>${desc}</p></div>
-        <button class="toggle" type="button" aria-pressed="false" aria-label="${name} zur Anfrage hinzufügen" data-group="${s.title}" data-name="${name}">
+        <button class="toggle" type="button" aria-pressed="false" aria-label="${name} in die Anfrage aufnehmen" data-group="${s.title}" data-name="${name}">
           <svg class="ic ic-plus" aria-hidden="true"><use href="#i-plus"/></svg><svg class="ic ic-ok" aria-hidden="true"><use href="#i-check"/></svg>
         </button>
       </li>`).join('')}
@@ -322,6 +320,7 @@ let scopeTouched = false;
 function renderScope() {
   const v = Number(scope.value);
   scope.style.setProperty('--p', `${v * 50}%`);
+  scope.setAttribute('aria-valuetext', SCOPES[v][0]);
   const t = $('#scopeTitle'), x = $('#scopeText');
   t.textContent = SCOPES[v][0];
   x.textContent = SCOPES[v][1];
@@ -403,9 +402,9 @@ $('#vcard').addEventListener('click', () => {
 let toastT;
 function toast(msg) {
   const t = $('#toast');
-  t.textContent = msg; t.hidden = false;
+  t.textContent = msg; t.classList.add('show');
   clearTimeout(toastT);
-  toastT = setTimeout(() => (t.hidden = true), 4000);
+  toastT = setTimeout(() => t.classList.remove('show'), 4000);
 }
 
 /* ───────── Router (SPA, Original-URLs bleiben gültig) ───────── */
@@ -422,7 +421,13 @@ function openLegal(key) {
   if (!legal.open) legal.showModal();
   legalOpen = true;
 }
-legal.addEventListener('close', () => { legalOpen = false; history.replaceState(null, '', sectionPath(currentSection)); lastFocus?.focus?.(); });
+let legalPushed = false;
+legal.addEventListener('close', () => {
+  legalOpen = false;
+  if (legalPushed) { legalPushed = false; history.back(); }
+  else history.replaceState(null, '', sectionPath(currentSection));
+  lastFocus?.focus?.();
+});
 $('#legalClose').addEventListener('click', () => legal.close());
 legal.addEventListener('click', (e) => { if (e.target === legal) legal.close(); });
 
@@ -449,8 +454,9 @@ function route(path, { scroll = true } = {}) {
 function go(path) {
   lastFocus = document.activeElement;
   setMenu(false);
-  if (!/impressum|datenschutz|agb/i.test(path)) history.pushState(null, '', path);
-  else history.replaceState(null, '', path);
+  const isLegal = /impressum|datenschutz|agb/i.test(path);
+  if (isLegal) legalPushed = !legal.open;
+  history.pushState(null, '', path);
   route(path);
 }
 document.addEventListener('click', (e) => {
@@ -459,7 +465,7 @@ document.addEventListener('click', (e) => {
   e.preventDefault();
   go(a.getAttribute('href'));
 });
-addEventListener('popstate', () => route(location.pathname));
+addEventListener('popstate', () => { legalPushed = false; route(location.pathname); });
 
 selectTab(0, false);
 if (initialPath !== '/') setTimeout(() => route(initialPath), 120);
