@@ -371,9 +371,8 @@ button { cursor: pointer; }
 @media (hover: hover) { .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgb(var(--forest-rgb) / 0.36); } }
 
 @media (max-width: 860px) {
-  .profile { grid-template-columns: 112px minmax(0, 1fr); grid-template-areas: "photo head" "body body"; column-gap: var(--s4); row-gap: var(--s5); padding: var(--s4); }
-  .profile-photo { min-height: 0; aspect-ratio: 4 / 5; align-self: center; border-radius: var(--r-lg); }
-  .profile-photo img { width: 165%; top: 5%; }
+  .profile { grid-template-columns: 128px minmax(0, 1fr); grid-template-areas: "photo head" "body body"; column-gap: var(--s4); row-gap: var(--s5); padding: var(--s4); }
+  .profile-photo { min-height: 0; aspect-ratio: 300 / 545; align-self: center; border-radius: var(--r-lg); }
   .profile-head { padding-top: 0; align-self: center; }
   .profile-head h2 { font-size: clamp(1.6rem, 7vw, 2.1rem); }
   .profile-role { font-size: 0.9rem; margin: var(--s1) 0 var(--s2); line-height: 1.35; }
